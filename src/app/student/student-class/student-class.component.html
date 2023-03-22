@@ -1,0 +1,72 @@
+<app-student-dash></app-student-dash>
+<br>
+<div class="card shadow-lg border-warning mb-3" style="margin-left: 5%;width: 75%;" >
+    <div class="card-header border-warning" style="align-content: center;">
+      <h3 style="font-style: italic;"> <b> Group &nbsp; <span> <i class="fas fa-school fa-lg" style="color:rgb(11, 5, 196)"></i></span>&nbsp; : {{class.groupName}}</b></h3> <br>
+    </div>
+    <div class="card-body border-warning">
+    <b>Group Description :</b>&nbsp;{{class.groupDesc}}<br><br>
+    <b>Grade :</b>&nbsp;{{grade.gradName}}<br><br>
+    <b>Subject :</b>&nbsp;{{sub.subName}}&nbsp;<br><br>
+    <b>Group Limit :</b>&nbsp;{{class.groupLimit}}&nbsp;<br><br>
+
+    <span> <button type="submit" class="btn btn-danger" style="margin-left: 75%;"data-toggle="modal" data-target="#deleteClass">Withdraw <span><i class="fas fa-sign-out-alt" style="color:orange"></i></span></button>
+    </span>
+
+     <!-------------------------------Delete Class-------------------------------------------->
+
+     <div class="modal fade" id="deleteClass" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle"><b>Are you sure ?</b> <span> &nbsp;<i class="fas fas fa-chalkboard" style="color: #0b29ab;"></i></span></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          
+          <div class="modal-footer">
+            <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-danger" (click)="deleteStud(stud.studId)">Delete</button>
+          </div>
+   
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="card shadow-lg border-warning mb-3" style="margin-left: 5%;width: 75%;">
+      <br>
+    <p>
+      &nbsp;<a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a> &nbsp;
+      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second element</button> &nbsp;
+      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button> &nbsp;
+    </p>
+    <!-- <div class="row">
+      <div class="col">
+        <div class="collapse multi-collapse" id="multiCollapseExample1">
+          <div class="card card-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="collapse multi-collapse" id="multiCollapseExample2">
+          <div class="card card-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+     -->
+     <div class="row">
+      <div class="col">
+        <div class="collapse multi-collapse" id="multiCollapseExample1">
+     &nbsp;<app-people-component></app-people-component>
+     </div>
+     </div>
+     </div>
+    

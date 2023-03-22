@@ -1,0 +1,116 @@
+
+<app-trainer-dash></app-trainer-dash>
+<br>
+<div *ngIf="msg">
+
+  <img class="style=align-items-center;"  style="height: 35%;width:40%;margin-left: 30%;"  src="assets/img/intersts.jpeg"  alt="..."  /><br>
+
+  <button type="submit" style="margin-left: 40%" class="btn btn-lg btn-primary" (click)="getSub()" data-toggle="modal" data-target="#addInterest">Add Your Interests&nbsp;<span><i class="fas fa-lg fa-heartbeat" style="color:red"></i></span></button>
+
+  <!----------------------------------------- Add Interest ----------------------------------------->
+  <div class="modal fade" id="addInterest" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+       
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle"><b>Choose any 3 your interests!!!</b> </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="form" (ngSubmit)="submitForm()"   novalidate>
+            <ul class="checkbox-grid">
+            <div  *ngFor="let subject of subjects; let i=index">
+              
+              
+                <li><input type="checkbox" [value]="subject.subjectName"  (change)="onCheckboxChange($event)" />
+                  <label>&nbsp;&nbsp;
+                {{subject.subjectName | uppercase}}
+              </label></li>
+              
+            </div>
+          </ul>
+          <br>
+          <!-- <mat-selection-list #subjects [(ngModel)]="selectedItems">
+            <mat-list-option [value]="sub.subId" *ngFor="let sub of subjects">
+              {{sub.subName}}
+            </mat-list-option>
+          </mat-selection-list> -->
+         
+            <!-- <input type="submit"  value="Submit" > -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-secondary">Add</button>
+            </div>
+          </form>
+        </div>
+       
+  
+    </div>
+    </div>
+    </div>
+
+    <!------------------------------------End Modal------------------------------------------>
+    <br>
+</div>
+    <div   >
+    <!-- <div   *ngIf="msg"> -->
+      <img class="style=align-items-center;"  style="height: 45%;width:50%;margin-left: 30%;"  src="assets/img/group.jpeg"  alt="..."  /><br>
+    <br>
+
+  <button type="submit" style="margin-left: 50%" class="btn btn-lg btn-warning" (click)="getInfo()"  data-toggle="modal" data-target="#addGroup">Creat Group&nbsp;<span><i class="fas fa-lg fa-users" style="color:rgb(63, 85, 224)"></i></span></button>
+
+  <!-------------------------------------Group Modal----------------------------------------->
+  <div class="modal fade" id="addGroup" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog d-flex justify-content-center">
+        <div class="modal-content w-75">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel2">Group Details</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <form  #groupForm="ngForm" (ngSubmit)="createGroup(id)">
+                    <!-- Name input -->
+                    <div class="form-outline mb-4">
+                      <label class="form-label" >Group Name</label>
+                      <input [(ngModel)]="group.name" name="groupName" type="text"  class="form-control" />
+                    </div>
+                    <!-- Desc input -->
+                    <div class="form-outline mb-4">
+                      <label class="form-label" >Group Description</label>
+                      <input [(ngModel)]="group.desc" name="groupDesc" type="textarea"  class="form-control" />
+                  </div>
+                  <!-- Group grade -->
+                  <label class="form-label" for="name2">Group Grade</label>
+                  <select [(ngModel)]="group.grade" class="form-control" name="groupGrad" aria-placeholder="Choose your grade">
+                    <option value="undefined" selected disabled>Select Grade</option>
+                    <option *ngFor="let grad of grades1" [ngValue]="grad.gradeName">{{grad.gradeName | uppercase}}</option>
+                </select>
+                  <br>
+                <!-- Group Subject-->
+                <label class="form-label" for="name2">Group Subject</label>
+                <select [(ngModel)]="group.subject" class="form-control" name="groupSub" aria-placeholder="Select your grade">
+                  <option value="undefined" selected disabled>Select Subject</option>
+                  <option *ngFor="let sub of subjects" [ngValue]="sub.subjectName">{{sub.subjectName | uppercase}}</option>
+              </select>
+                <br>
+                    <!-- Limit input -->
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="limit">Group Limit</label>
+                        <input type="number" [(ngModel)]="group.limit" name="groupLimit" class="form-control" />
+                    </div>
+                    <!-- Submit button -->
+                    <button type="submit" class="btn btn-primary btn-block">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!------------------------------------------- End Modal  ----------------------------------->
+    </div>
+    
+    
+
+
+ 

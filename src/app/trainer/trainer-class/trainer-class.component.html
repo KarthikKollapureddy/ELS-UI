@@ -1,0 +1,91 @@
+<app-trainer-dash></app-trainer-dash>
+<br>
+<div class="card shadow-lg border-warning mb-3" style="margin-left: 5%;width: 75%;" >
+    <div class="card-header border-warning" style="align-content: center;">
+      <h3 style="font-style: italic;"> <b> Group &nbsp; <span> <i class="fas fa-school fa-lg" style="color:rgb(11, 5, 196)"></i></span>&nbsp; : {{class.name}}</b></h3> <br>
+    </div>
+    <div class="card-body border-warning">
+    <b>Group Description :</b>&nbsp;{{class.desc}}<br><br>
+    <!-- <b>Grade :</b>&nbsp;{{grade.getSub}}<br><br> -->
+    <b>Subject :</b>&nbsp;{{class.subject}}&nbsp;<br><br>
+    <b>Group Limit :</b>&nbsp;{{class.limit}}&nbsp;<br><br>
+
+    <span><button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#editGroup" (click)="getInfo()">Edit Class</button>
+      &nbsp;  <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#deleteClass">Delete Class</button>
+    </span>
+
+    <!---------------------------------------- Edit Group ----------------------------------->
+    <div class="modal fade" id="editGroup" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+        <div class="modal-dialog d-flex justify-content-center">
+            <div class="modal-content w-75">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel2">Group Details</h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form  #groupForm="ngForm" (ngSubmit)="editGroup(groupId)">
+                        <!-- Name input -->
+                        <div class="form-outline mb-4">
+                          <label class="form-label" >Group Name</label>
+                            <input [(ngModel)]="class.name" name="groupName" type="text"  class="form-control" />
+                        </div>
+                        <!-- Desc input -->
+                        <div class="form-outline mb-4">
+                          <label class="form-label" >Group Description</label>
+                          <input [(ngModel)]="class.desc" name="groupDesc" type="textarea"  class="form-control" />
+                      </div>
+    
+                      <!-- Group grade -->
+                      <label class="form-label" for="name2">Group Grade</label>
+                      <select [(ngModel)]="class.grade" class="form-control" name="groupGrad" aria-placeholder="Choose your grade">
+                        <option value="undefined" selected disabled>Select Grade</option>
+                        <option *ngFor="let grade of grades" [ngValue]="grade.gradeName">{{grade.gradeName}}</option>
+                    </select>
+                      <br>
+                      <!-- Group Subject-->
+                      <label class="form-label" for="name2">Group Subject</label>
+                    <select [(ngModel)]="class.subject" class="form-control" name="groupSub" aria-placeholder="Select your grade">
+                      <option value="undefined" selected disabled>Select Subject</option>
+                      <option *ngFor="let sub of subjects" [ngValue]="sub.subjectName">{{sub.subjectName}}</option>
+                  </select>
+    
+                        <!-- Limit input -->
+                        <div class="form-outline mb-4">
+                          <label class="form-label" for="email2">Group Limit</label>
+                            <input type="number" [(ngModel)]="class.limit" name="groupLimit" class="form-control" />
+                        </div>
+    
+                       
+    
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-primary btn-block">Add</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--------------------------------------End Modal------------------------------------>
+
+    <!-------------------------------Delete Class-------------------------------------------->
+
+    <div class="modal fade" id="deleteClass" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle"><b>Are you sure ?</b> <span> &nbsp;<i class="fas fas fa-chalkboard" style="color: #0b29ab;"></i></span></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            
+            <div class="modal-footer">
+              <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-danger" (click)="deleteGroup(groupId)">Delete</button>
+            </div>
+     
+          </div>
+        </div>
+      </div>
+</div>
+</div>

@@ -1,0 +1,23 @@
+<app-student-dash></app-student-dash>
+<br>
+<div *ngIf="groups.length == 0">
+
+    <img class="style=align-items-center;"  style="height: 35%;width:40%;margin-left: 30%;"  src="assets/img/empty.jpg"  alt="..."  /><br>
+  </div>
+  <div *ngIf="msg == '' ">
+    <div class="card-deck" style="margin-left: 5%;">
+       
+<div  class="card shadow-lg border-info mb-3" style="max-width: 18rem;" *ngFor="let gr of groups">
+    <div class="card-header bg-info border-info">
+      <a class="nav-link"[routerLink]="['/studClass',id,gr.groupId]">{{gr.groupName}}</a>
+    </div>
+    <div class="card-body bg-transparent border-info">
+      <blockquote class="blockquote mb-0">
+        <p>{{gr.groupDesc}}</p>
+        <footer class="blockquote-footer bg-transparent border-info">Limit <cite title="Source Titl e">{{gr.groupLimit}}</cite></footer>
+      </blockquote>
+    </div>
+    </div>
+    </div>
+  </div>
+  

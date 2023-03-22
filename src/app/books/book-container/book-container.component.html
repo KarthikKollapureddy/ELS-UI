@@ -1,0 +1,4 @@
+<div class="container-fluid">
+    <app-book-template *ngFor="let item of itemsList" [favCheck]="favCheck"  [items]="item" (addBook)="addToFavouriteList($event)" (deleteFavBook)='deleteBookFav($event)'></app-book-template>
+</div>  
+

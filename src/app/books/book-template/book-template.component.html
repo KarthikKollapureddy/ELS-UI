@@ -1,0 +1,28 @@
+<div class="container-fluid" style="margin-left: 3%;">
+    <div class="row">
+        <div class="col-sm cards">
+            <mat-card class="news-card">
+                <mat-card-header>
+                    <mat-card-title class="news-title">{{items.volumeInfo.title}}</mat-card-title>
+                    <mat-card-subtitle style="height: 20px;;">{{items.volumeInfo.subtitle}}</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image class="news-image" [src]="items.volumeInfo.imageLinks.smallThumbnail" [alt]="" />
+                <mat-card-content class="news-overview">
+                    {{items.volumeInfo.description}}
+                </mat-card-content>
+                <mat-card-subtitle>
+                    <b>Author: </b>{{items.volumeInfo.authors}}
+                    <b>&nbsp;&nbsp;publishedDate :</b> {{items.volumeInfo.publishedDate}} <br>
+                    
+                    <b>&nbsp;&nbsp;Pdf avialbility :</b>{{items.accessInfo.pdf.isAvailable}}
+                
+                </mat-card-subtitle>
+                <mat-card-actions class="news-actions">
+                    <a  color="acent" target="_blank" href={{items.volumeInfo.infoLink}}>Read more...</a>
+                    <button *ngIf="!favCheck" class="btn btn-primary"  (click)="addToFavouriteList()">Add to favourites</button>
+                    <button *ngIf="favCheck" class="btn btn-danger"  (click)="deleteBookFav()">Delete</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>
